@@ -16,8 +16,11 @@ io.sockets.on('connection', function (socket) {
 	} ); // query url up
 	
 	socket.on( "interaction up", function( interaction ) { 
-		socket.get( interaction['socketid'], function( url ) { 
-			socket.broadcast.to( url ).emit( "interaction down",  interaction );
-		} ); // socket.get
+		socket.get( interaction['socketid'], (function(interact) { 
+			return function( url ) { 
+				interact['timestamp'] = (new Date() ).getTime();
+				socket.broadcast.to( url ).emit( "interaction down",  interact );
+			}; // return function
+		} )(interaction) ); // socket.get
 	} ); // interaction event
 }); // connection
