@@ -17,7 +17,7 @@ socket.on( "new user join down", MyJoinedRoomCallback );
 socket.on( "interaction down", MyInteractionCallback );
 
 function MyFireInteractionEvent( interaction ) { 
-	interactin['socketid'] = suckitid;
+	interaction['socketid'] = suckitid;
 	socket.emit( "interaction up", interaction );
 }; // MyFireInteractionEvent
 

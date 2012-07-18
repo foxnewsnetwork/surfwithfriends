@@ -330,18 +330,20 @@ mousebox.MouseBox = function(p) {
 }
 mousebox.MouseBox.__name__ = ["mousebox","MouseBox"];
 mousebox.MouseBox.main = function() {
-	mousebox.MouseBox.StaticInitialize(function(v) {
-		MyFireInteractionEvent(v);
+	new js.JQuery("document").ready(function(e) {
+		mousebox.MouseBox.StaticInitialize(function(v) {
+			MyFireInteractionEvent(v);
+		});
+		var mybox = new mousebox.MouseBox();
+		var interaction = function(d) {
+			mybox.Mouse(d);
+		};
+		var joinroom = function(d) {
+			haxe.Log.trace(d,{ fileName : "MouseBox.hx", lineNumber : 17, className : "mousebox.MouseBox", methodName : "main"});
+		};
+		MyInteractionCallback = interaction;
+		MyJoinedRoomCallback = joinroom;
 	});
-	var mybox = new mousebox.MouseBox();
-	var interaction = function(d) {
-		mybox.Mouse(d);
-	};
-	var joinroom = function(d) {
-		haxe.Log.trace(d,{ fileName : "MouseBox.hx", lineNumber : 16, className : "mousebox.MouseBox", methodName : "main"});
-	};
-	MyInteractionCallback = interaction;
-	MyJoinedRoomCallback = joinroom;
 }
 mousebox.MouseBox.Ready = function(a) {
 	return;
