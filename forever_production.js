@@ -3,7 +3,7 @@ var forever = require( "forever" );
 
 var child = new (forever.Monitor)('surf.js', {
     max: 3,
-    silent: true,
+    silent: false,
     options: []
 });
 
