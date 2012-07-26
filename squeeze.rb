@@ -2,7 +2,7 @@
 files = [
 	'./public/javascripts/socket.io.js' ,
 	'./public/javascripts/client.js' ,
-	'./public/javascripts/mousebox.js' ,
+	'./public/javascripts/surfbox.js' ,
 ] # files
 
 output = File.open( "./public/javascripts/surfwithfriends.js", "a+" )
